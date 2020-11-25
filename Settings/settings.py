@@ -143,8 +143,6 @@ MEDIA_URL = '/Public/'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'Static')]
-
 LOGIN_REDIRECT_URL = 'feeds'
 
 LOGIN_URL = 'home'
