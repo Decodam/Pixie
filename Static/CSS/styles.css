@@ -1,0 +1,470 @@
+/* ============================= Global-Styles ============================= */
+
+/* ----------------------------- Google-Fonts-CDN ----------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    outline: none !important;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+:root{
+    --red: #FF4158;
+    --blue: #41C6FF;
+    --yellow: #FFCA41;
+}
+
+body::-webkit-scrollbar{
+    display: none !important;
+}
+
+body{
+    background: #f8f8f8;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+nav{
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.material-icons{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+main{
+    width: 100%;
+    max-width: 800px;
+    margin: 65px auto;
+}
+
+
+/* ----------------------------- App-Loaders-Styles ----------------------------- */
+
+#loader{
+    height: 100vh;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    z-index: 100000;
+    top: 0;
+    background: white;
+}
+
+
+.spinner {
+    display: inline-block;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+}
+.spinner div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.spinner div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+    background: var(--red);
+}
+.spinner div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+    background: var(--blue);
+}
+.spinner div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+    background: var(--yellow);
+}
+.spinner div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+    background: var(--green);
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+/* ==============X=============== Global-Styles ===============X============== */
+
+/* ============================= App-Stack-Navigator-Styles ============================= */
+
+header{
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.logo_img{
+    height: 45px;
+}
+
+.account-img.rounded-circle{
+    width: 45px;
+    height: 45px;
+    box-shadow: 0 0 25px #00000023;
+}
+
+/* ==============X=============== App-Stack-Navigator-Styles ==============X=============== */
+
+/* ============================= App-Tab-Navigator-Styles ============================= */
+
+footer{
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-top: 1px solid #e6e6e6;
+}
+
+.nav_item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav_item{
+    color: #5c5c5c;
+}
+
+.nav_item:hover, .nav_item.active_link{
+    color: #1d1d1d;
+}
+
+.nav_item_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_item_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: smaller;
+}
+
+@media screen and (max-width: 480px) {
+    .nav_item_title {
+        display: none;
+    }
+
+    .nav_link .nav_item .nav_item_icon .material-icons{
+        font-size: 28px;
+    }
+}
+
+/* ==============X=============== App-Tab-Navigator-Styles ==============X=============== */
+
+/* ============================= App-Content-Styles ============================= */
+
+section{
+    background: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #e9e9e9;
+    margin: 20px 0 !important;
+}
+
+.link-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20PX;
+}
+
+.post-meta{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.details-content{
+    margin-left: 5px;
+}
+
+.details-content--time{
+    font-size: smaller;
+}
+
+.details-content--name{
+    font-weight: 600;
+}
+
+.post-image{
+    width: 100%;
+}
+
+.post-caption{
+    margin: 0 20px 20px 20px !important;
+    padding-top: 10px;
+    text-align: justify;
+}
+
+.comment-box::-webkit-scrollbar{
+    display: none;
+}
+
+.comment-box{
+    padding: 15px 20PX;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.comment-form{
+    padding: 15px 20PX;
+    width: 100%;
+}
+
+.comment-form .comment-input{
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+
+.comment-form .comment-submit{
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+.comment-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.comment-col-1{
+    flex: 1;
+}
+
+@media screen and (max-width: 480px) {
+    section{
+        border: none;
+        border-radius: 0;
+        margin: 10px 0 !important;
+    }
+
+    .link-text{
+        display: none;
+    }
+}
+
+
+/* ----------------------------- Stories-Slider-Styles ----------------------------- */
+
+.slider.border-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20PX !important;
+}
+
+.slider-card{
+    width: 100px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    transition: all 1s;
+}
+
+
+.account-img-stories{
+    z-index: 1000;
+    padding: 5px;
+    width: 45px !important;
+    height: 45px !important;
+}
+
+/* ==============X=============== App-Content-Styles ==============X=============== */
+
+/* ============================= Explore-Content-Styles ============================= */
+
+.explore-card.border{
+    width: 100px;
+    height: 150px;
+    background: #ffffff;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    transition: all 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.account-img-explore.mt-2.rounded-circle{
+    height: 80px;
+    width: 80px;
+}
+
+.explore-user-name.text-center.text-dark.mt-2{
+    font-size: smaller;
+}
+
+.explore-flex{
+    columns: 2;
+    column-gap: 0;
+    z-index:1;
+}
+
+.explore-img-container {
+    overflow: hidden;
+}
+
+.explore-img-container .explore-img {
+    transition: transform .5s ease;
+    width: 100%;
+    transition:0.4s ease-in-out;
+}
+
+.explore-img-container:hover .explore-img {
+    transform: scale(1.5);
+}
+
+
+@media screen and (max-width: 480px) {
+    .explore-img-container:hover .explore-img {
+        transform: scale(1);
+    }
+}
+
+
+
+/* ==============X=============== Explore-Content-Styles ==============X=============== */
+
+/* ============================= Auth-Page-Styles ============================= */
+
+.auth{
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container{
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 25px #00000017;
+    overflow-y: scroll;
+    max-height: 90vh;
+}
+
+.auth-container::-webkit-scrollbar{
+    display: none;
+}
+
+.form-row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.form-input{
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+
+.form-col-input{
+    flex: 1;
+}
+
+.auth-form{
+    margin-top: 20px;
+}
+
+.auth-button{
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 10px;
+    background: var(--yellow);
+    border: none;
+    color: white;
+    font-size: larger;
+}
+
+
+/* ==============X=============== Auth-Page-Styles ==============X=============== */
+/* ==============X=============== Profile-Page-Styles ==============X=============== */
+
+.container.post-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.post-img{
+    width: 250px;
+    height: 250px;
+    margin: 15px;
+    background-size: cover;
+    background-position: center;
+}
