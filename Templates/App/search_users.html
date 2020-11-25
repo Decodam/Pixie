@@ -1,0 +1,51 @@
+{% extends 'App/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <section>
+        <div class="link-box">
+            <h2 class="text-center font-weight-bold text-dark">Search Users</h2>
+
+            
+            <div class="dropdown show dropright">
+                <a class="text-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-filter"></i>
+                </a>
+            
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> 
+                    <a class="dropdown-item text-info" href="{% url 'search_users'%}">Search users</a>
+                    <a class="dropdown-item text-warning" href="{% url 'search_tags'%}">Search tags</a>
+                </div>
+            </div>
+        </div>
+        <div class="comment-form mt-0 border-top">
+            <form autocomplete="off" method="GET" action="">
+                <div class="comment-row">
+                    <div class="comment-col-1">{% render_field search_filter.form.user__username__icontains class+="comment-input" placeholder="Search for users by username..." %}</div>
+                    <div class="comment-col-2"><button class="comment-submit text-secondary" type="submit"><i class="fas fa-search"></i></button></div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    {% if search_users.count != 0 %}
+        {% for target_user in search_users %}
+            <section>
+                <div class="notification-box">
+                    <a href="{% url 'user_detail' target_user.user.id %}">
+                        <div class="link-box">
+
+                            <img class="account-img rounded-circle" src="{{target_user.profile_pic.url}}" alt="">
+                                
+                            <div class="details-content">
+                                <div class="details-content--name text-right text-dark">{{ target_user.user.username }}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        {% endfor %}
+    {% else %}
+        <h6 class="text-center font-weight-light text-dark">No results found....</h6>
+    {% endif %}
+{% endblock content %}

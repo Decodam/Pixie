@@ -1,0 +1,123 @@
+{% extends "App/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <style>
+        .media{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .img-box.p-4{
+          width: 100%;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+    </style>
+
+    <div class="content-section">
+      <section style="overflow: hidden !important;" class="pb-4">
+        <div class="media">
+
+          <div style="background-image: url({{user.profile.banner_pics.url}});" class="img-box p-4">
+            <img class="account-img rounded-circle" style="width: 200px !important; height: 200px !important;" src="{{user.profile.profile_pic.url}}" alt="">
+          </div>
+          
+          
+          <div class="media-body m-4">
+            <h2 class="account-heading text-center font-weight-bold">{{ user.username }}</h2>
+            <p class="text-secondary text-center mt-4 font-weight-light">{{ user.first_name }} {{ user.last_name }}</p>
+            <p class="text-secondary text-center font-weight-bold">{{ user.email }}</p>
+            <p style="font-size: 20px;" class="text-dark text-center font-weight-bold">{{ user.profile.followers.count }} followers  |  {{ user.profile.following.count }} followings</p>   
+          </div>
+            
+          
+          {% if user.profile.bio %}
+            <p class="text-center text-secondary">{{user.profile.bio}}</p>
+          {% else %}
+            <p class="text-center text-secondary">No bio posted yet</p>
+          {% endif %}
+          
+          <a class="btn btn-outline-danger m-3 btn-sm" href="{% url 'logout' %}">Logout</a>
+  
+          
+          {% if user.is_superuser %}
+            <a target="_blank" class="btn btn-outline-warning m-3 btn-sm" href="/admin">Admin</a> 
+          {% endif %}
+
+        </div>
+      </section>
+
+
+      <section class="p-4">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-screams-tab" data-toggle="tab" href="#nav-screams" role="tab" aria-controls="nav-screams" aria-selected="true">MY SCREAMS</a>
+            <a class="nav-item nav-link" id="nav-likes-tab" data-toggle="tab" href="#nav-likes" role="tab" aria-controls="nav-likes" aria-selected="false">LIKES</a>
+            <a class="nav-item nav-link" id="nav-bookmarks-tab" data-toggle="tab" href="#nav-bookmarks" role="tab" aria-controls="nav-bookmarks" aria-selected="false">BOOKMARKS</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">UPDATE PROFILE</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+
+          <!-- ------------ User's Screams ------------ -->
+          <div class="tab-pane fade show active" id="nav-screams" role="tabpanel" aria-labelledby="nav-screams-tab">
+            
+            <div class="container mt-4 mb-4 post-box">
+              {% for post in posts %}
+                <a href="{% url 'scream_details' post.id %}">
+                  <div style="background-image: url('{{ post.image.url }}');" class="post-img"></div>     
+                </a>
+              {% endfor %}      
+            </div>
+          </div>
+
+          <!-- ------------ User's Likes ------------ -->
+          <div class="tab-pane fade" id="nav-likes" role="tabpanel" aria-labelledby="nav-likes-tab">
+            
+            <div class="container mt-4 mb-4 post-box">
+              {% for post in all_posts %}
+                
+                {% if user in post.likes.all %}
+                  <a href="{% url 'scream_details' post.id %}">
+                    <div style="background-image: url('{{ post.image.url }}');" class="post-img"></div>     
+                  </a>
+                {% endif %}
+                  
+              {% endfor %}      
+            </div>
+          </div>
+
+          <!-- ------------ User's Bookmarks ------------ -->
+          <div class="tab-pane fade" id="nav-bookmarks" role="tabpanel" aria-labelledby="nav-bookmarks-tab">
+            <div class="container mt-4 mb-4 post-box">
+              {% for post in user.profile.bookmarks.all %}
+                <a href="{% url 'scream_details' post.id %}">
+                  <div style="background-image: url('{{ post.image.url }}');" class="post-img"></div>     
+                </a>
+              {% endfor %}      
+            </div>
+          </div>
+
+          <!-- ------------ User's Profile Update ------------ -->
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <form method="POST" autocomplete="off" enctype="multipart/form-data">
+              {% csrf_token %}
+              <fieldset class="form-group mt-4">
+                  {{ u_form|crispy }}
+                  {{ p_form|crispy }}
+              </fieldset>
+              <div class="form-group">
+                  <button class="btn btn-block btn-outline-dark btn-lg" type="submit">Update</button>
+              </div>
+            </form>
+          </div>
+
+          
+
+        </div>
+      </section>
+    </div>
+{% endblock content %}

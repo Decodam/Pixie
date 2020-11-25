@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixie - 505</title>
+
+    <link rel="icon" href="https://res.cloudinary.com/db0xz4meo/image/upload/v1606224832/Static/IMG/icon_siiosf.svg" type="image/svg" sizes="16x16">
+
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        *{
+            font-family: 'Poppins', sans-serif;
+            outline: none !important;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .button{
+            width: 100%;
+            padding: 15px 0;
+            border-radius: 10px;
+            background: #FFCA41;
+            border: none;
+            color: white;
+            font-size: larger;
+            text-align: center;
+            max-width: 400px;
+            cursor: pointer;
+            margin: 25px 10px;
+        }
+
+        a{
+            text-decoration: none !important;
+        }
+
+        .main-img{
+            max-width: 450px;
+            width: 100%;
+            margin-top: 100px;
+        }
+
+        .main-text{
+            margin-top: 45px;
+            text-align: center;
+            max-width: 650px;
+        }
+
+    </style>
+    <img class="main-img" src="https://res.cloudinary.com/db0xz4meo/image/upload/v1606224832/Static/IMG/505_htxz0i.svg" alt="505">
+
+    <h1 class="main-text">Something went wrong with the server. <br> Please try again later.</h1>
+
+    <a href="{% url 'home' %}">
+        <div class="button">Get back to home</div>
+    </a>
+</body>
+</html>

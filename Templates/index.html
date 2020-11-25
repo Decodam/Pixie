@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Pixie</title>
+
+    <link rel="icon" href="https://res.cloudinary.com/db0xz4meo/image/upload/v1606224832/Static/IMG/icon_siiosf.svg" type="image/svg" sizes="16x16">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <style>
+        .navigation-clean-button {
+            background: #fff;
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            color: #333;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            margin-bottom: 0;
+        }
+        
+        @media (min-width:768px) {
+            .navigation-clean-button {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+        }
+        
+        nav {
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+        }
+
+        .navigation-clean-button .navbar-brand {
+            font-weight: bold;
+            color: inherit;
+        }
+        
+        .navigation-clean-button .navbar-brand:hover {
+            color: #222;
+        }
+        
+        .navigation-clean-button.navbar-dark .navbar-brand:hover {
+            color: #f0f0f0;
+        }
+        
+        .navigation-clean-button .navbar-brand img {
+            height: 100%;
+            display: inline-block;
+            margin-right: 10px;
+            width: auto;
+        }
+        
+        .navigation-clean-button .navbar-toggler {
+            border-color: #ddd;
+        }
+        
+        .navigation-clean-button .navbar-toggler:hover, .navigation-clean-button .navbar-toggler:focus {
+            background: none;
+        }
+        
+        .navigation-clean-button.navbar-dark .navbar-toggler {
+            border-color: #555;
+        }
+        
+        .navigation-clean-button .navbar-toggler {
+            color: #888;
+        }
+        
+        .navigation-clean-button.navbar-dark .navbar-toggler {
+            color: #eee;
+        }
+        
+        .navigation-clean-button .navbar-collapse, .navigation-clean-button .form-inline {
+            border-top-color: #ddd;
+        }
+        
+        .navigation-clean-button.navbar-dark .navbar-collapse, .navigation-clean-button.navbar-dark .form-inline {
+            border-top-color: #333;
+        }
+        
+        .navigation-clean-button .navbar-nav a.active, .navigation-clean-button .navbar-nav > .show > a {
+            background: none;
+            box-shadow: none;
+        }
+        
+        .navigation-clean-button.navbar-light .navbar-nav a.active, .navigation-clean-button.navbar-light .navbar-nav a.active:focus, .navigation-clean-button.navbar-light .navbar-nav a.active:hover {
+            color: #8f8f8f;
+            box-shadow: none;
+            background: none;
+            pointer-events: none;
+        }
+        
+        .navigation-clean-button.navbar .navbar-nav .nav-link {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+        
+        .navigation-clean-button.navbar-light .navbar-nav .nav-link {
+            color: #465765;
+        }
+        
+        .navigation-clean-button.navbar-light .navbar-nav .nav-link:focus, .navigation-clean-button.navbar-light .navbar-nav .nav-link:hover {
+            color: #37434d !important;
+            background-color: transparent;
+        }
+        
+        .navigation-clean-button .navbar-nav > li > .dropdown-menu {
+            margin-top: -5px;
+            box-shadow: 0 4px 8px #0000001a;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+        
+        .navigation-clean-button .dropdown-menu .dropdown-item:focus, .navigation-clean-button .dropdown-menu .dropdown-item {
+            line-height: 2;
+            font-size: 14px;
+            color: #37434d;
+        }
+        
+        .navigation-clean-button .dropdown-menu .dropdown-item:focus, .navigation-clean-button .dropdown-menu .dropdown-item:hover {
+            background: #eee;
+            color: inherit;
+        }
+        
+        @media (max-width:767px) {
+            .navigation-clean-button .navbar-nav .show .dropdown-menu {
+                box-shadow: none;
+            }
+        }
+        
+        @media (max-width:767px) {
+            .navigation-clean-button .navbar-nav .show .dropdown-menu .dropdown-item {
+                color: #37434d;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                line-height: 1;
+            }
+        }
+        
+        .navigation-clean-button.navbar-dark {
+            background-color: #1f2021;
+            color: #fff;
+        }
+        
+        .navigation-clean-button.navbar-dark .navbar-nav a.active, .navigation-clean-button.navbar-dark .navbar-nav a.active:focus, .navigation-clean-button.navbar-dark .navbar-nav a.active:hover {
+            color: #8f8f8f;
+            box-shadow: none;
+            background: none;
+            pointer-events: none;
+        }
+        
+        .navigation-clean-button.navbar-dark .navbar-nav .nav-link {
+            color: #dfe8ee;
+        }
+        
+        .navigation-clean-button.navbar-dark .navbar-nav .nav-link:focus, .navigation-clean-button.navbar-dark .navbar-nav .nav-link:hover {
+            color: #fff !important;
+            background-color: transparent;
+        }
+        
+        .navigation-clean-button.navbar-dark .navbar-nav > li > .dropdown-menu {
+            background-color: #1f2021;
+        }
+        
+        .navigation-clean-button.navbar-dark .dropdown-menu .dropdown-item:focus, .navigation-clean-button.navbar-dark .dropdown-menu .dropdown-item {
+            color: #f2f5f8;
+        }
+        
+        .navigation-clean-button.navbar-dark .dropdown-menu .dropdown-item:focus, .navigation-clean-button.navbar-dark .dropdown-menu .dropdown-item:hover {
+            background: #363739;
+        }
+
+        
+        a{
+            text-decoration: none !important;
+        }
+        
+        @media (max-width:767px) {
+            .navigation-clean-button.navbar-dark .navbar-nav .show .dropdown-menu .dropdown-item {
+                color: #fff;
+            }
+        }
+        
+
+        .navigation-clean-button.navbar-dark .actions .login {
+            color: #dfe8ee;
+        }
+        
+        .navigation-clean-button.navbar-dark .actions .login:hover {
+            color: #fff;
+        }
+        
+        .navigation-clean-button .navbar-text .action-button, .navigation-clean-button .navbar-text .action-button:active, .navigation-clean-button .navbar-text .action-button:hover {
+            border-radius: 20px;
+            font-size: inherit;
+            color: #fff;
+            box-shadow: none;
+            border: none;
+            text-shadow: none;
+            padding: .5rem 1rem;
+            transition: background-color 0.25s;
+            font-size: inherit;
+        }
+        
+        * {
+            outline: none !important;
+            font-family: 'Poppins';
+        }
+        
+        .btn.btn-light.action-button {
+            padding: 10px 30px;
+            font-size: large;
+            background-color: #FFCA41;
+        }
+        
+        .btn.btn-light.action-button:hover {
+            padding: 10px 30px;
+            font-size: large;
+            background-color: #ffbc0f;
+        }
+        
+        .navbar-light .navbar-nav .nav-link {
+            font-size: large;
+        }
+        
+        .navbar-light .navbar-text a {
+            font-size: large;
+        }
+        
+        .navbar-light .navbar-toggler {
+            border: none;
+        }
+
+        .logo_img{
+            height: 50px !important;
+        }
+        
+        @media (max-width: 768px) {
+            .btn.btn-light.action-button {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-light .navbar-text {
+                width: 100% !important;
+            }
+        }
+            
+            
+                
+            
+        /* ----------------------------- App-Loaders-Styles ----------------------------- */
+            
+        #loader{
+            height: 100vh;
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            width: 100vw;
+            z-index: 100000;
+            top: 0;
+            background: white;
+        }
+        
+        
+        .spinner {
+            display: inline-block;
+            position: absolute;
+            width: 80px;
+            height: 80px;
+        }
+        .spinner div {
+            position: absolute;
+            top: 33px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            animation-timing-function: cubic-bezier(0, 1, 1, 0);
+        }
+        .spinner div:nth-child(1) {
+            left: 8px;
+            animation: lds-ellipsis1 0.6s infinite;
+            background: var(--red);
+        }
+        .spinner div:nth-child(2) {
+            left: 8px;
+            animation: lds-ellipsis2 0.6s infinite;
+            background: var(--blue);
+        }
+        .spinner div:nth-child(3) {
+            left: 32px;
+            animation: lds-ellipsis2 0.6s infinite;
+            background: var(--yellow);
+        }
+        .spinner div:nth-child(4) {
+            left: 56px;
+            animation: lds-ellipsis3 0.6s infinite;
+            background: var(--green);
+        }
+        
+        @keyframes lds-ellipsis1 {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes lds-ellipsis3 {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+        @keyframes lds-ellipsis2 {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(24px, 0);
+            }
+        }
+
+
+        /* ================== Main page template ================== */
+        section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .landing-img{
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .footer-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+    </style>
+
+
+    
+    <div id="loader">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div> 
+
+
+
+
+
+
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button border-bottom">
+        <div class="container">
+            
+            <a class="navbar-brand" href="{% url 'home' %}"><img class="logo_img" src="https://res.cloudinary.com/db0xz4meo/image/upload/v1606224832/Static/IMG/logo_x8bqzk.svg" alt=""></a>
+
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link text-center" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-center" href="{% url 'about' %}">About me</a></li>
+                </ul>
+                <span class="navbar-text actions">
+                    <a class="btn btn-light action-button" role="button" href="{% url 'login' %}">Get Started</a>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <section class="mt-4">
+            <img class="landing-img" src="https://res.cloudinary.com/db0xz4meo/image/upload/v1606271100/Static/IMG/landing-filters_mhyyzw.svg" alt="">
+            <h3 style="font-size: 30px; font-weight: 900; margin-top: 60px;" class="text-dark text-center">Pixie let's you express yourself to the world</h3>
+            <h1 style="font-size: 60px; font-weight: 900;" class="text-dark text-center">in the form of pixels</h1>
+
+            <div style="width: 100%; max-width: 600px" class="m-4 text-secondary font-weight-light text-center">
+                Welcome to pixie, a social network which lets you connect to the world in the form of pixel! It helps you share your pics publicly all over the world! So what are you waiting for join pixie now!!!
+            </div>
+
+            <a class="btn btn-light action-button text-white" style="border-radius: 100px; max-width: 300px !important; width: 100%; padding: 15px 0;" role="button" href="{% url 'login' %}">Get Started</a>
+        </section>
+
+
+        
+        <section style="margin-top: 200px;">
+            <img class="landing-img" src="https://res.cloudinary.com/db0xz4meo/image/upload/v1606228902/Static/IMG/landing-share_xvvpxo.svg" alt="">
+            <h3 style="font-size: 30px; font-weight: 900; margin-top: 60px;" class="text-dark text-center">Share your pics,</h3>
+            <h1 style="font-size: 60px; font-weight: 900;" class="text-dark text-center">Join your friends</h1>
+
+            <div style="width: 100%; max-width: 600px" class="m-4 text-secondary font-weight-light text-center">
+                Pixie makes your images talk. They can express a lot. So make some new friends, join the community, share your pics and start trending!!!
+            </div>
+
+            <a class="btn btn-light action-button text-white" style="border-radius: 100px; max-width: 300px !important; width: 100%; padding: 15px 0;" role="button" href="{% url 'login' %}">Get Started</a>
+        </section>
+
+
+
+        <section style="margin-top: 200px;">
+            <img class="landing-img" src="https://res.cloudinary.com/db0xz4meo/image/upload/v1606271100/Static/IMG/landing_ehertd.svg" alt="">
+            <h3 style="font-size: 30px; font-weight: 900; margin-top: 60px;" class="text-dark text-center">Edit your photos before upload,</h3>
+            <h1 style="font-size: 60px; font-weight: 900;" class="text-dark text-center">Your pics will express you!</h1>
+
+            <div style="width: 100%; max-width: 600px" class="m-4 text-secondary font-weight-light text-center">
+                Your pics should express you. So you can edit your pics before upload using the pixie's photo editor having some really cool filters. And guess what? More filters coming soon!!! 
+            </div>
+
+            <a class="btn btn-light action-button text-white" style="border-radius: 100px; max-width: 300px !important; width: 100%; padding: 15px 0;" role="button" href="{% url 'login' %}">Get Started</a>
+        </section>
+
+
+
+        <section style="margin-top: 200px;">
+            <img class="landing-img" src="https://res.cloudinary.com/db0xz4meo/image/upload/v1606228902/Static/IMG/landing-hashtag_nj38ww.svg" alt="">
+            <h3 style="font-size: 30px; font-weight: 900; margin-top: 60px;" class="text-dark text-center">Follow the community</h3>
+            <h1 style="font-size: 60px; font-weight: 900;" class="text-dark text-center">Explore the tags</h1>
+
+            <div style="width: 100%; max-width: 600px" class="m-4 text-secondary font-weight-light text-center">
+                Pixie has a huge community of users sharing their pics to the world. So to explore this huge pic library, we have the #. You can create tags share them and explore them!
+            </div>
+
+            <a class="btn btn-light action-button text-white" style="border-radius: 100px; max-width: 300px !important; width: 100%; padding: 15px 0;" role="button" href="{% url 'login' %}">Get Started</a>
+        </section>
+
+
+
+        <section style="margin-top: 200px; margin-bottom: 100px;">
+            <img class="landing-img" src="https://res.cloudinary.com/db0xz4meo/image/upload/v1606228902/Static/IMG/landing-sequrity_aavu5q.svg" alt="">
+            <h3 style="font-size: 30px; font-weight: 900; margin-top: 60px;" class="text-dark text-center">Your privacy,</h3>
+            <h1 style="font-size: 60px; font-weight: 900;" class="text-dark text-center">Our first policy.</h1>
+
+            <div style="width: 100%; max-width: 600px" class="m-4 text-secondary font-weight-light text-center">
+                At pixie your privacy matters a lot. So to protect you we have a high level of security including super secured passwords, controllable public visibility on the app, and a lot more features!
+            </div>
+
+            <a class="btn btn-light action-button text-white" style="border-radius: 100px; max-width: 300px !important; width: 100%; padding: 15px 0;" role="button" href="{% url 'login' %}">Get Started</a>
+        </section>
+
+    </main>
+
+    <footer class="border-top">
+        <div class="container mt-2 mb-2 footer-container">
+            <a class="text-dark text-center" href="{% url 'home' %}">home</a>
+            <a class="text-dark text-center" href="{% url 'about' %}">About me</a>
+            <a class="text-dark text-center" href="{% url 'register' %}">Register</a>
+            <a class="text-dark text-center" href="{% url 'login' %}">Login</a>
+        </div>
+    </footer>
+
+    
+    <!-- ----------------------- Custom-loader-Javascript ------------------------->
+    <script src="https://res.cloudinary.com/db0xz4meo/raw/upload/v1606224834/Static/JS/loader_djd3oe.js"></script>
+        
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{% extends 'App/base.html' %}
+
+
+{% block content %}
+    <section>
+        <h2 class="text-center font-weight-bold text-dark p-3">Notifications for you</h2>
+    </section>
+    {% if objects.count != 0 %}
+        {% for notification in objects %}
+            <section>
+                <div class="notification-box">
+                    <a href="{% url 'user_detail' notification.user.id %}">
+                        <div class="link-box">
+                            <img class="account-img rounded-circle" src="{{notification.user.profile.profile_pic.url}}" alt="">
+                            <div class="details-content">
+                                <div class="details-content--name text-right text-dark">{{ notification.user.username }}</div>
+                                <div class="details-content--time text-right text-secondary">{{ notification.date_posted|timesince }} ago</div>
+                            </div>
+                        </div>
+                    </a>
+                    <p class="content p-4 mb-0 text-justify font-weight-light border-top">
+                        <a href="{% url 'user_detail' notification.user.id %}" class="text-dark font-weight-bold">@{{notification.user.username}}:</a> {{notification.content}}
+                        
+                        {% if notification.post %}
+                            <a href="{% url 'scream_details' notification.post.id %}" class="text-dark font-weight-bold">Check it out here</a>
+                        {% endif %}
+                            
+                    </p>
+                </div>
+            </section>
+        {% endfor %}
+    {% else %}
+        <h6 class="text-center font-weight-light text-dark">No notifcations for now ....</h6>
+    {% endif %}
+{% endblock content %}

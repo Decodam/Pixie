@@ -1,0 +1,73 @@
+{% extends "App/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <style>
+        .media{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .img-box.p-4{
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+
+    <div class="content-section">
+        <section style="overflow: hidden !important;" class="pb-4">
+            <div class="media">
+                <div style="background-image: url({{target_user.profile.banner_pics.url}});" class="img-box p-4">
+                    <img class="account-img rounded-circle" style="width: 200px !important; height: 200px !important;" src="{{target_user.profile.profile_pic.url}}" alt="">
+                </div>
+
+                <div class="media-body m-4">
+                    <h2 class="account-heading text-center font-weight-bold">{{ target_user.username }}</h2>
+                    {% if target_user.profile.show_names_to_public == True %}
+                        <p class="text-secondary text-center mt-4 font-weight-light">{{ target_user.first_name }} {{ target_user.last_name }}</p>
+                    {% endif %}
+
+                    {% if target_user.profile.show_email_to_public == True %}
+                        <p class="text-secondary text-center font-weight-bold">{{ target_user.email }}</p>
+                    {% endif %}
+                    <p style="font-size: 20px;" class="text-dark text-center font-weight-bold">{{ target_user.profile.followers.count }} followers  |  {{ target_user.profile.following.count }} followings</p>   
+                </div>
+            
+            
+                {% if target_user.profile.bio %}
+                    <p class="text-center text-secondary">{{target_user.profile.bio}}</p>
+                {% else %}
+                    <p class="text-center text-secondary">No bio posted yet</p>
+                {% endif %}
+            
+            
+                {% if target_user in user.profile.following.all %}
+                    <a class="btn btn-outline-danger btn-lg" href="{% url 'follow' target_user.id %}">Unfollow user</a>
+                {% else %}
+                    <a class="btn btn-outline-info btn-lg" href="{% url 'follow' target_user.id %}">Follow user</a>
+                {% endif %}
+            
+            
+            </div>
+        </section>
+
+
+
+
+        
+
+        <section>
+                <h1 class="text-center border-bottom p-4">Screams by {{ target_user.username }} ({{posts.count}} Screams)</h1>
+                <div class="container post-box">
+                    {% for post in posts %}
+                        <a href="{% url 'scream_details' post.id %}">
+                            <div style="background-image: url('{{ post.image.url }}');" class="post-img"></div>     
+                        </a>
+                    {% endfor %}      
+                </div>
+        </section>
+    </div>
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends 'App/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section>
+        <h2 class="text-dark text-center mt-2 font-weight-bold">People you may know</h2>
+
+
+        <div class="slider border-top">
+            <div style="margin: 0 !important; padding: 0 !important;" class="owl-carousel">
+                {% for target_user in users %}
+                    
+                    {% if user != target_user %}
+                        <div class="item">
+                            <a href="{% url 'user_detail' target_user.id %}">
+                                <div class="explore-card border">
+                                    <img class="account-img-explore mt-2 rounded-circle" src="{{target_user.profile.profile_pic.url}}" alt="">
+                                    <p class="explore-user-name text-center text-dark mt-2">{{target_user.username|truncatechars:14}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                    
+                {% endfor %}
+            </div>
+        </div>
+    </section> 
+
+    <section>
+        <h2 class="text-dark text-center border-bottom mt-2 pb-2 font-weight-bold">Create tags, Create topics</h2>
+        <div class="comment-form mb-2">
+            <form autocomplete="off" method="POST" action="">
+                {% csrf_token %}
+                <div class="comment-row">
+                    <div class="comment-col-1"><input required class="comment-input" placeholder="Type in the tag name..." type="text" name="tag_name"></div>
+                    <div class="comment-col-2"><button class="comment-submit text-secondary" type="submit"><i class="fas fa-paper-plane"></i></button></div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <section class=" ">
+        <h2 class="text-dark text-center border-bottom mt-2 pb-2 font-weight-bold">Posts You may like</h2>
+        <div class="explore-flex p-4">
+            {% for post in posts %}
+                {% if user != post.author %}
+                    <a href="{% url 'scream_details' post.id %}">
+                        <div class="explore-img-container">
+                            <img class="explore-img" src="{{post.image.url}}" alt="">
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </section>
+
+
+
+{% endblock content %}

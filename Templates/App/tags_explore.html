@@ -1,0 +1,26 @@
+{% extends 'App/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 class="text-dark text-center font-weight-bold">Screams with similar tags</h1>  
+
+<section class="p-4 explore-flex">
+    {% for post in posts %}
+        {% if target_tag in post.tags.all %}
+        <a href="{% url 'scream_details' post.id %}">
+            <div class="explore-img-container">
+                <img class="explore-img" src="{{ post.image.url }}" alt="">
+            </div>
+        </a>
+        {% endif %}
+    {% endfor %}     
+</section>
+
+
+
+
+
+
+{% endblock content %}
+

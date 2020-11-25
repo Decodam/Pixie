@@ -1,0 +1,142 @@
+{% extends 'App/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section>
+        <h1 class="text-dark text-center mt-2 font-weight-bold">Feeds for you</h1>
+
+        <div class="slider border-top">
+            <div style="margin: 0 !important; padding: 0 !important;" class="owl-carousel">
+
+                <div class="item">
+                    <a href="{% url 'profile' %}">
+                        <div style="background-image: url({{user.profile.banner_pics.url}});" class="slider-card border">
+                            <img class="account-img-stories rounded-circle" src="{{user.profile.profile_pic.url}}" alt="">
+                        </div>
+                    </a>
+                </div>
+                
+                {% for target_user in user.profile.following.all %}
+                    
+                    <div class="item">
+                        <a href="{% url 'user_detail' target_user.id %}">
+                            <div style="background-image: url({{target_user.profile.banner_pics.url}});" class="slider-card border">
+                                <img class="account-img-stories rounded-circle" src="{{target_user.profile.profile_pic.url}}" alt="">
+                            </div>
+                        </a>
+                    </div>
+                    
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section> 
+
+    <!-- Main-Post -->
+    {% for post in posts %}
+    
+    {% if post.author in user.profile.following.all or user == post.author %}
+        
+    <section>
+        <div class="link-box">
+            
+            {% if user == post.author %}
+                <a href="{% url 'profile' %}">
+                    <div class="post-meta">
+                        <img class="account-img rounded-circle" src="{{post.author.profile.profile_pic.url}}" alt="">
+                        
+                        <div class="details-content">
+                            <div class="details-content--time text-secondary">{{ post.date_posted|timesince }} ago</div>
+                            <div class="details-content--name text-dark">{{post.author.username}}</div>
+                        </div>
+                    </div>
+                </a>
+            {% else %}
+                <a href="{% url 'user_detail' post.author.id %}">
+                    <div class="post-meta">
+                        <img class="account-img rounded-circle" src="{{post.author.profile.profile_pic.url}}" alt="">
+                        <div class="details-content">
+                            <div class="details-content--time text-secondary">{{ post.date_posted|timesince }} ago</div>
+                            <div class="details-content--name text-dark">{{post.author.username}}</div>
+                        </div>
+                    </div>
+                </a>
+            {% endif %}
+            
+
+            <div class="dropdown dropright show">
+                <a class="text-dark" href="{% url 'scream_details' pk=post.id %}" ><i class="fas fa-ellipsis-v"></i></a>
+            </div>
+        </div>
+
+        <img class="post-image" src="{{post.image.url}}" alt="">
+
+        <div class="link-box">
+            
+            {% if user in post.likes.all %}
+                <a class="text-primary" href="{% url 'add_like_to_post' post.id %}"><i class="fas fa-thumbs-up"></i> {{post.likes.count}} <span class="link-text">likes</span></a>
+            {% else %}
+            <a class="text-primary" href="{% url 'add_like_to_post' post.id %}"><i class="far fa-thumbs-up"></i> {{post.likes.count}} <span class="link-text">likes</span></a>
+            {% endif %}
+
+            {% if user in post.hearts.all %}
+                <a class="text-danger" href="{% url 'add_heart_to_post' post.id %}"><i class="fas fa-heart"></i> {{post.hearts.count}} <span class="link-text">hearts</span></a>
+            {% else %}  
+                <a class="text-danger" href="{% url 'add_heart_to_post' post.id %}"><i class="far fa-heart"></i> {{post.hearts.count}} <span class="link-text">hearts</span></a>
+            {% endif %}
+
+            <a class="text-warning" href="#comment-form-{{post.id}}"><i class="far fa-comment-dots"></i> {{post.comments.count}} <span class="link-text">comments</span></a>
+        </div>          
+
+        <div class="post-caption text-secondary border-top">
+            <p class="font-weight-light">
+                <span class="text-dark font-weight-bold">Tags:</span>
+                
+                {% for tag in post.tags.all %}
+                    <a class="text-secondary" href="{% url 'tag_filter' pk=tag.id %}">#{{tag.name}}</a>
+                {% endfor %}
+                    
+            </p>
+
+            {% if user == comment.author %}
+                <a href="{% url 'profile' %}" class="text-dark font-weight-bold">@{{post.author.username}}:</a> {{post.caption}}
+            {% else %}
+                <a href="{% url 'user_detail' post.author.id %}" class="text-dark font-weight-bold">@{{post.author.username}}:</a> {{post.caption}}
+            {% endif %}
+        </div>
+
+        <!-- ---- style="overflow: hidden !important; max-height: 100% !important;" ---- -->
+        <div id="comment-form-{{post.id}}" class="comment-box border-top">
+            <h4 class="text-center mb-3 font-weight-bold">Comments({{post.comments.count}})</h4>
+            
+            {% for comment in post.comments.all %}
+                {% if user == comment.author %}
+                    <div class="comment mt-2 mb-2"><a href="{% url 'profile' %}" class="text-dark font-weight-bold">@{{comment.author.username}}:</a> {{comment.content}}</div>
+                {% else %}
+                    <div class="comment mt-2 mb-2"><a href="{% url 'user_detail' comment.author.id %}" class="text-dark font-weight-bold">@{{comment.author.username}}:</a> {{comment.content}}</div>
+                {% endif %}
+                
+            {% endfor %}
+        </div>
+
+        <div class="comment-form border-top">
+            <form autocomplete="off" method="POST" action="{% url 'add_comment_to_post' pk=post.id %}">
+                {% csrf_token %}
+                <div class="comment-row">
+                    <div class="comment-col-1"><input required class="comment-input" placeholder="Type in your comment..." type="text" name="comment"></div>
+                    <div class="comment-col-2"><button class="comment-submit text-secondary" type="submit"><i class="fas fa-paper-plane"></i></button></div>
+                </div>
+            </form>
+        </div>
+    </section> 
+
+    {% endif %}
+        
+    {% endfor %}
+
+
+
+    
+{% endblock content %}
+
